@@ -1,13 +1,21 @@
 import React, {Component} from "react";
 
-import {Rater} from "../components/Rater";
+import {Rater, Submit} from "../components/Rater";
+// import {Submit} from "../components/Submit";
 
 class Entry extends Component {
 
   render() {
     return(
-      
-      <Rater />
+
+      <div>
+
+        <p className="lead">How was your day?</p>
+
+        <Rater />
+        <Submit />
+
+      </div>
 
     )
   }
