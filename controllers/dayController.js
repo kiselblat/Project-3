@@ -1,11 +1,11 @@
 const db = require("../models");
 
-const isToday = (someDate) => {
-  const today = new Date()
-  return someDate.getDate() == today.getDate() &&
-    someDate.getMonth() == today.getMonth() &&
-    someDate.getFullYear() == today.getFullYear()
-}
+// const isToday = (someDate) => {
+//   const today = new Date()
+//   return someDate.getDate() == today.getDate() &&
+//     someDate.getMonth() == today.getMonth() &&
+//     someDate.getFullYear() == today.getFullYear()
+// }
 
 // Defining methods for the Day controller
 module.exports = {
@@ -36,6 +36,7 @@ module.exports = {
   //     .catch(err => res.status(422).json(err));
   // },
   create: function(req, res) {
+    // console.log(req.body);
     db.Day
       .create(req.body)
       .then(dbModel => res.json(dbModel))
