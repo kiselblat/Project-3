@@ -9,8 +9,8 @@ router.route("/")
 // Matches with "/api/days/:date"
 router
   .route("/:date")
-  .get(booksController.findByDate)
-  .put(booksController.update)
-  .delete(booksController.remove);
+  .get(dayController.findByDate)
+  .put(dayController.update)
+  // .delete(dayController.remove);
 
 module.exports = router;

@@ -3,9 +3,9 @@ import axios from "axios";
 export default {
   // Gets all days
   getAll: function() {
-    return axios.get("/api/days");
+    return axios.get("/api/days/");
   },
-  // Gets the day with the given id
+  // Gets the day with the given date
   getDay: function(date) {
     return axios.get("/api/days/" + date);
   },
@@ -15,6 +15,6 @@ export default {
   // },
   // Saves a day to the database
   saveDay: function(rating) {
-    return axios.post("/api/days", rating);
+    return axios.post("/api/days/", rating);
   }
 };
