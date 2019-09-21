@@ -1,0 +1,11 @@
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+
+const daySchema = new Schema({
+  rating: { type: String, required: true },
+  date: { type: Date, default: Date.now }
+});
+
+const Day = mongoose.model("Day", daySchema);
+
+module.exports = Day;
