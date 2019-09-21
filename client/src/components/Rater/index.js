@@ -71,6 +71,6 @@ export function Rater(props) {
 
 export function Submit(props) {
   return(
-    <input className="btn btn-primary" type="submit" value="Submit"></input>
+    <input className="btn btn-primary" type="submit" value="Submit" onClick={props.onClick}></input>
   )
 }

@@ -2,6 +2,8 @@ import React, {Component} from "react";
 
 import {Rater, Submit} from "../components/Rater";
 
+import API from "../utils/API";
+
 class Entry extends Component {
 
   constructor(props) {
@@ -10,6 +12,7 @@ class Entry extends Component {
       dayRating: "0"
     }
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   // handle any changes to the input fields
@@ -25,6 +28,8 @@ class Entry extends Component {
     event.preventDefault();
 
     console.log(`Submitted: ${this.state.dayRating}`);
+
+    API.saveDay({ rating: this.state.dayRating });
   }
 
   render() {
@@ -41,8 +46,9 @@ class Entry extends Component {
           onChange={this.handleInputChange}
           checked={this.state.dayRating}
         />
-        <Submit />
-
+        <Submit 
+          onClick={this.handleSubmit}
+        />
       </div>
 
     )
