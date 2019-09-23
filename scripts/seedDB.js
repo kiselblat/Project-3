@@ -12,7 +12,7 @@ mongoose.connect(
 
 const daySeed = [
   {
-    rating: "",
+    rating: "5",
     date: new Date("2019-08-30")
   },
   {
