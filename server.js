@@ -1,7 +1,10 @@
+require("dotenv").config();
 const express = require("express");
 const path = require("path");
-const PORT = process.env.PORT || 3001;
+const cron = require('node-cron');
 const app = express();
+
+const PORT = process.env.PORT || 3001;
 const mongoose = require("mongoose");
 const routes = require("./routes");
 
@@ -14,7 +17,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-const db = require("./config/keys").mongoURI;
+const db = process.env.MONGO_URI;
 
 // Connect to MongoDB
 mongoose
@@ -35,4 +38,8 @@ app.get("*", function(req, res) {
 
 app.listen(PORT, function() {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
+});
+
+cron.schedule('* * * * *', () => {
+  console.log('running a task every minute');
 });
