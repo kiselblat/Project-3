@@ -2,10 +2,11 @@ require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const cron = require('node-cron');
+const mongoose = require("mongoose");
 const app = express();
 
 const PORT = process.env.PORT || 3001;
-const mongoose = require("mongoose");
+const mail = require("./lib/Mailer")
 const routes = require("./routes");
 
 app.use(express.urlencoded({ extended: true }));
@@ -42,4 +43,5 @@ app.listen(PORT, function() {
 
 cron.schedule('* * * * *', () => {
   console.log('running a task every minute');
+  mail("kiselblat@gmail.com", "This test email should appear every minute")
 });
