@@ -41,7 +41,7 @@ app.listen(PORT, function() {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
 });
 
-cron.schedule('* * * * *', () => {
-  console.log('running a task every minute');
-  mail("kiselblat@gmail.com", "This test email should appear every minute")
+cron.schedule('0 10 * * *', () => {
+  console.log('running a task at 10am,');
+  mail("kiselblat@gmail.com", "This test email should appear at 10am in herokuland")
 });
