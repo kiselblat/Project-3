@@ -1,8 +1,12 @@
+require("dotenv").config();
 const express = require("express");
 const path = require("path");
-const PORT = process.env.PORT || 3001;
-const app = express();
+const cron = require('node-cron');
 const mongoose = require("mongoose");
+const app = express();
+
+const PORT = process.env.PORT || 3001;
+const mail = require("./lib/Mailer")
 const routes = require("./routes");
 
 app.use(express.urlencoded({ extended: true }));
@@ -14,7 +18,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-const db = require("./config/keys").mongoURI;
+const db = process.env.MONGO_URI;
 
 // Connect to MongoDB
 mongoose
@@ -35,4 +39,9 @@ app.get("*", function(req, res) {
 
 app.listen(PORT, function() {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
+});
+
+cron.schedule('0 10 * * *', () => {
+  console.log('running a task at 10am,');
+  mail("kiselblat@gmail.com", "This test email should appear at 10am in herokuland")
 });

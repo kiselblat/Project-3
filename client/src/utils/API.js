@@ -16,5 +16,8 @@ export default {
   // Saves a day to the database
   saveDay: function(rating) {
     return axios.post("/api/days/", rating);
+  },
+  sendMail: function(mail) {
+    return axios.post("/mail/send/", mail);
   }
 };
