@@ -18,7 +18,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-const db = process.env.MONGO_URI;
+const db = process.env.MONGODB_URI || "mongodb://localhost/dayrater";
 
 // Connect to MongoDB
 mongoose
