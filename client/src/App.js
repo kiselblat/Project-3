@@ -7,6 +7,8 @@ import Header from "./components/Header";
 import Entry from "./pages/Entry"
 import Stats from "./pages/Stats"
 import Settings from "./pages/Settings"
+import Login from "./pages/Login"
+import Register from "./pages/Register"
 // import Rater from "./components/Rater";
 import "./App.css";
 
@@ -53,7 +55,7 @@ class App extends Component {
 
   render() {
     return (
-        <div>
+        <Router>
           <Header updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
           {!this.state.loggedIn ?
             // if user isn't logged in, force login
@@ -61,11 +63,11 @@ class App extends Component {
               <Route
               path="/signup"
               render={() =>
-                <Signup/>}
+                <Register/>}
               />
               <Route
               render={() => 
-                <LoginForm
+                <Login
                   updateUser={this.updateUser}
                   />
                 }
@@ -80,7 +82,7 @@ class App extends Component {
               <Route exact path="/settings" component={Settings} />
             </Switch>
           }
-        </div>
+        </Router>
     );
   }
 }
