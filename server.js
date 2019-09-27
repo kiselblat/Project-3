@@ -1,5 +1,9 @@
 require("dotenv").config();
 const express = require("express");
+const morgan = require("morgan");
+const session = require("express-session");
+const MongoStore = require("connect-mongo")(session);
+const passport = require("./passport");
 const path = require("path");
 const cron = require('node-cron');
 const mongoose = require("mongoose");
@@ -9,6 +13,7 @@ const PORT = process.env.PORT || 3001;
 const mail = require("./lib/Mailer")
 const routes = require("./routes");
 
+app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
