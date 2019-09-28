@@ -2,7 +2,7 @@ const path = require("path");
 const router = require("express").Router();
 const loginRoutes = require("./user");
 
-// Mail routes
+// User routes
 router.use("/user", loginRoutes);
 
 // Additional Routes

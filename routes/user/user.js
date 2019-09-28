@@ -1,8 +1,9 @@
 const express = require('express')
 const router = express.Router()
-const User = require('../models/user')
-const passport = require('..')
+const User = require('../../models/user')
+const passport = require('../../passport')
 
+// should match to /auth/user/
 router.post('/', (req, res) => {
     console.log('user signup');
 
