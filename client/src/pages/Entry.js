@@ -30,7 +30,10 @@ class Entry extends Component {
 
     console.log(`Submitted: ${this.state.dayRating}`);
 
-    API.saveDay({ rating: this.state.dayRating });
+    API.saveDay({
+      rating: this.state.dayRating,
+      username: this.state.currentUser
+    });
   }
 
   render() {
