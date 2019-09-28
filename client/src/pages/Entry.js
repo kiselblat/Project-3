@@ -9,7 +9,8 @@ class Entry extends Component {
   constructor(props) {
     super(props);
     this.state= {
-      dayRating: "0"
+      dayRating: "0",
+      currentUser: props.currentUser
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -40,6 +41,7 @@ class Entry extends Component {
 
         <p className="lead">How was your day?</p>
         <p className="testingfield">Selected Rating: {this.state.dayRating}</p>
+        <p className="testingfield">Current User: {this.state.currentUser}</p>
 
         <Rater
           name='dayRating'
