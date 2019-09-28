@@ -6,6 +6,7 @@ import API from "../utils/API";
 class Stats extends Component {
   state = {
     days: [],
+    currentUser: this.props.currentUser
   }
 
   componentDidMount() {
@@ -13,7 +14,7 @@ class Stats extends Component {
   }
 
   loadDays = () => {
-    API.getAll()
+    API.getAllFromUser(this.props.currentUser)
       .then(res => {
         console.log(res.data);
         this.setState({ days: res.data });
@@ -35,7 +36,7 @@ class Stats extends Component {
           <List>
             {this.state.days.map(day => (
               <ListItem key={day._id}>
-                {day.date}: {day.rating}
+                {day.username} on {day.date}: {day.rating}
               </ListItem>
             ))}
           </List>

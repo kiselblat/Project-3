@@ -5,6 +5,9 @@ export default {
   getAll: function() {
     return axios.get("/api/days/");
   },
+  getAllFromUser: function(username) {
+    return axios.get("/api/days/" + username);
+  },
   // Gets the day with the given date
   getDay: function(date) {
     return axios.get("/api/days/" + date);
