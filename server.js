@@ -8,6 +8,8 @@ const path = require("path");
 const cron = require('node-cron');
 const mongoose = require("mongoose");
 const app = express();
+mongoose.Promise = global.Promise
+const dbConnection = require('./database') 
 
 const PORT = process.env.PORT || 3001;
 const mail = require("./lib/Mailer")
@@ -25,14 +27,19 @@ if (process.env.NODE_ENV === "production") {
 
 const db = process.env.MONGODB_URI || "mongodb://localhost/dayrater";
 
-// Connect to MongoDB
-mongoose
-  .connect(
-    db,
-    { useNewUrlParser: true }
-  )
-  .then(() => console.log("MongoDB successfully connected"))
-  .catch(err => console.log(err));
+// Sessions
+app.use(
+	session({
+		secret: 'fraggle-rock', //pick a random string to make the hash that is generated secure
+		store: new MongoStore({ mongooseConnection: dbConnection }),
+		resave: false, //required
+		saveUninitialized: false //required
+	})
+)
+
+// Passport
+app.use(passport.initialize())
+app.use(passport.session()) // calls the deserializeUser
 
 app.use(routes);
 
