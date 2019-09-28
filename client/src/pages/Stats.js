@@ -14,7 +14,7 @@ class Stats extends Component {
   }
 
   loadDays = () => {
-    API.getAll()
+    API.getAllFromUser(this.props.currentUser)
       .then(res => {
         console.log(res.data);
         this.setState({ days: res.data });
