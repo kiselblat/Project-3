@@ -56,7 +56,7 @@ class App extends Component {
   render() {
     return (
         <Router>
-          <Header updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
+          <Header updateUser={this.updateUser} loggedIn={this.state.loggedIn} currentUser={this.state.username}/>
           {!this.state.loggedIn ?
             // if user isn't logged in, force login
             <Switch>
@@ -76,10 +76,10 @@ class App extends Component {
           :
             // if the user is logged in
             <Switch>
-              <Route exact path="/" component={Entry} />
-              <Route exact path="/entry" component={Entry} />
-              <Route exact path="/stats" component={Stats} />
-              <Route exact path="/settings" component={Settings} />
+              <Route exact path="/" render={ () => {return <Entry  loggedIn={this.state.loggedIn} currentUser={this.state.username} />} } />
+              <Route exact path="/entry" render={ () => {return <Entry  loggedIn={this.state.loggedIn} currentUser={this.state.username} />} } />
+              <Route exact path="/stats" render={ () => {return <Stats  loggedIn={this.state.loggedIn} currentUser={this.state.username} />} } />
+              <Route exact path="/settings" render={ () => {return <Settings  loggedIn={this.state.loggedIn} currentUser={this.state.username} />} } />
             </Switch>
           }
         </Router>
