@@ -50,7 +50,7 @@ module.exports = {
   },
   update: function(req, res) {
     db.Day
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
+      .findOneAndUpdate({ date: req.params.date }, req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

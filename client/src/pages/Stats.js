@@ -23,6 +23,11 @@ class Stats extends Component {
       .catch(err => console.log(err));
   }
 
+  prettyDate = (dateString) => {
+    let newDate = new Date(dateString);
+    return newDate.toDateString();
+  }
+
   render() {
     return(
 
@@ -36,7 +41,7 @@ class Stats extends Component {
           <List>
             {this.state.days.map(day => (
               <ListItem key={day._id}>
-                {day.username} on {day.date}: {day.rating}
+                {day.username} on {this.prettyDate(day.date)}: {day.rating}
               </ListItem>
             ))}
           </List>

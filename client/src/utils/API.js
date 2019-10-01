@@ -20,6 +20,9 @@ export default {
   saveDay: function(rating) {
     return axios.post("/api/days/", rating);
   },
+  updateDay: function(rating, date) {
+    return axios.put("/api/days/" + date, rating)
+  },
   sendMail: function(mail) {
     return axios.post("/mail/send/", mail);
   }
