@@ -38,9 +38,9 @@ class Header extends Component {
           <div className="col-4" >
             {loggedIn ? (
               <section className="navbar-section">
-                <Link to="#" className="btn btn-link text-secondary" onClick={this.logout}>
-                  <span className="text-secondary">logout</span>
-                </Link>
+                <div>
+                  {this.props.currentUser}
+                </div>
                 <Link to="/" className="btn btn-link text-secondary">
                   <span className="text-secondary">home</span>
                 </Link>
@@ -50,9 +50,9 @@ class Header extends Component {
                 <Link to="/settings" className="btn btn-link text-secondary">
                   <span className="text-secondary">settings</span>
                 </Link>
-                <div>
-                  {this.props.currentUser}
-                </div>
+                <Link to="#" className="btn btn-link text-secondary" onClick={this.logout}>
+                  <span className="text-secondary">logout</span>
+                </Link>
               </section>
             ) : (
               <section className="navbar-section">
